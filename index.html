@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Cata 🐱🌈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #003366; /* Azul Nyan Cat */
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Fondo de estrellas animado (CSS puro) */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: moveStars 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveStars {
+            from {background-position: 0 0;}
+            to {background-position: -200px 200px;}
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 800px;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-shadow: 4px 4px 0px #ff00de; /* Sombra rosa neón */
+            margin-bottom: 20px;
+            line-height: 1.5;
+            animation: bounce 2s infinite;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* Marco para la foto */
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px auto;
+            border: 8px solid white;
+            padding: 10px;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 4px solid #003366;
+        }
+
+        /* El GIF del gato */
+        .nyan-cat {
+            width: 150px;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Botón de sonido */
+        .btn-sound {
+            background-color: #ff9900;
+            border: 4px solid #fff;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 6px 6px 0px #b36b00;
+            transition: transform 0.1s;
+            margin-bottom: 50px;
+        }
+
+        .btn-sound:active {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px #b36b00;
+        }
+
+        /* Animaciones */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <h1>¡Hola, Cata!</h1>
+        
+        <img src="https://media.giphy.com/media/sIIhZ104wx4wU/giphy.gif" alt="Nyan Cat" class="nyan-cat">
+
+        <p>
+            Te regalo este vaso mágico<br>
+            lleno de sorpresas arcoíris.
+        </p>
+
+        <div class="photo-frame">
+            <img src="https://media.istockphoto.com/id/1145618475/vector/pixel-art-red-heart-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=OrQv0VqE2v3F9CSgO3T7X_8vH6-kHdhCQC3W5K38iQA=" 
+                 alt="Foto de nosotras" id="userPhoto">
+        </div>
+
+        <button class="btn-sound" onclick="toggleMusic()">🎵 Play Nyan Music 🎵</button>
+        
+        <audio id="nyanAudio" loop>
+            <source src="https://www.nyan.cat/music/original.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <script>
+        var music = document.getElementById("nyanAudio");
+        var btn = document.querySelector(".btn-sound");
+        var isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                btn.innerHTML = "🎵 Play Nyan Music 🎵";
+                btn.style.backgroundColor = "#ff9900";
+            } else {
+                music.play();
+                btn.innerHTML = "⏸ Pause Nyan Music ⏸";
+                btn.style.backgroundColor = "#ff00de"; // Cambia a rosa al sonar
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Script opcional para cargar tu foto local si quieres probarlo rápido
+        // Simplemente arrastra tu foto al navegador si lo abres en Chrome ;)
+    </script>
+</body>
+</html>
