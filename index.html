@@ -20,7 +20,7 @@
             min-height: 100vh;
         }
 
-        /* Fondo de estrellas animado (CSS puro) */
+        /* Fondo de estrellas animado */
         .stars {
             position: fixed;
             top: 0;
@@ -145,8 +145,7 @@
         </p>
 
         <div class="photo-frame">
-            <img src="nosotras.jpg" 
-                 alt="Foto de nosotras" id="userPhoto">
+            <img src="nosotras.jpg" alt="Foto de nosotras" id="userPhoto">
         </div>
 
         <button class="btn-sound" onclick="toggleMusic()">🎵 Play Nyan Music 🎵</button>
@@ -170,14 +169,10 @@
             } else {
                 music.play();
                 btn.innerHTML = "⏸ Pause Nyan Music ⏸";
-                btn.style.backgroundColor = "#ff00de"; // Cambia a rosa al sonar
+                btn.style.backgroundColor = "#ff00de"; 
             }
             isPlaying = !isPlaying;
         }
-
-        // Script opcional para cargar tu foto local si quieres probarlo rápido
-        // Simplemente arrastra tu foto al navegador si lo abres en Chrome ;)
     </script>
 </body>
-
 </html>
